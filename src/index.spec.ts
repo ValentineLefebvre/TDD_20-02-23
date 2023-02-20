@@ -24,7 +24,7 @@ expect.extend(matchers);
 //   expect(absolute_value(-1)).toEqual(1);
 // });
 
-export const compute_manhattan_distance = function (pt_a:Coordinates, pt_b:Coordinates):number{
+const compute_manhattan_distance = function (pt_a:Coordinates, pt_b:Coordinates):number{
 	return Math.abs(pt_a.x - pt_b.x) + Math.abs(pt_a.y - pt_b.y)
 }
 
