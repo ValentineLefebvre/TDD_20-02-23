@@ -31,10 +31,12 @@ const compute_manhattan_distance = function (pt_a:Coordinates, pt_b:Coordinates)
 	return compute_one_axis_distance(pt_a.x,pt_b.x) + compute_one_axis_distance(pt_a.y,pt_b.y);
 }
 
+// on vérifie que la distance d'un pt à lui-même est nulle
 test("Manhattan 0", () => {
 	const a:Coordinates = {x:0,y:0};
   	expect(compute_manhattan_distance(a,a)).toEqual(0)
 });
+// on vérifie que la distance est bien calculée sur un axe
 test("Manhattan y1", () => {
 	const a:Coordinates = {x:0,y:0};
 	const b:Coordinates = {x:0,y:1};
@@ -60,11 +62,13 @@ test("Manhattan y5", () => {
 	const b:Coordinates = {x:0,y:-1};
   	expect(compute_manhattan_distance(a,b)).toEqual(7)
 });
+// un test "complet" sur l'autre axe
 test("Manhattan x", () => {
 	const a:Coordinates = {x:2,y:0};
 	const b:Coordinates = {x:-3,y:0};
   	expect(compute_manhattan_distance(a,b)).toEqual(5);
 });
+// variations sur les deux axes en même temps
 test("Manhattan xy1", () => {
 	const a:Coordinates = {x:0,y:0};
 	const b:Coordinates = {x:1,y:1};
@@ -89,4 +93,10 @@ test("Manhattan xy5", () => {
 	const a:Coordinates = {x:-1,y:2};
 	const b:Coordinates = {x:5,y:-3};
   	expect(compute_manhattan_distance(a,b)).toEqual(11);
+});
+// un test sur le 2e axe, mais où les coordonnées sur le 1er axe ne sont pas nulles
+test("Manhattan x bis", () => {
+	const a:Coordinates = {x:2,y:-5};
+	const b:Coordinates = {x:-3,y:-5};
+  	expect(compute_manhattan_distance(a,b)).toEqual(5);
 });
