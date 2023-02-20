@@ -24,8 +24,11 @@ expect.extend(matchers);
 //   expect(absolute_value(-1)).toEqual(1);
 // });
 
+const compute_one_axis_distance = function (coord_a:number, coord_b:number):number{
+	return Math.abs(coord_a - coord_b);
+}
 const compute_manhattan_distance = function (pt_a:Coordinates, pt_b:Coordinates):number{
-	return Math.abs(pt_a.x - pt_b.x) + Math.abs(pt_a.y - pt_b.y)
+	return compute_one_axis_distance(pt_a.x,pt_b.x) + compute_one_axis_distance(pt_a.y,pt_b.y);
 }
 
 test("Manhattan 0", () => {
