@@ -1,5 +1,6 @@
 // @ts-ignore see https://github.com/jest-community/jest-extended#setup
 import * as matchers from "jest-extended";
+import {Coordinates} from ".";
 
 expect.extend(matchers);
 
@@ -23,13 +24,7 @@ expect.extend(matchers);
 //   expect(absolute_value(-1)).toEqual(1);
 // });
 
-type Coordinates = {
-	x:number;
-	y:number;
-}
-
-
-const compute_manhattan_distance = function (pt_a:Coordinates, pt_b:Coordinates):number{
+export const compute_manhattan_distance = function (pt_a:Coordinates, pt_b:Coordinates):number{
 	return Math.abs(pt_a.x - pt_b.x) + Math.abs(pt_a.y - pt_b.y)
 }
 
@@ -43,19 +38,29 @@ test("Manhattan y1", () => {
   	expect(compute_manhattan_distance(a,b)).toEqual(1)
 });
 test("Manhattan y2", () => {
-	const a:Coordinates = {x:0,y:2};
-	const b:Coordinates = {x:0,y:1};
+	const a:Coordinates = {x:0,y:1};
+	const b:Coordinates = {x:0,y:2};
   	expect(compute_manhattan_distance(a,b)).toEqual(1)
 });
-test("Manhattan x1", () => {
-	const a:Coordinates = {x:0,y:0};
-	const b:Coordinates = {x:1,y:0};
-  	expect(compute_manhattan_distance(a,b)).toEqual(1);
+test("Manhattan y3", () => {
+	const a:Coordinates = {x:0,y:3};
+	const b:Coordinates = {x:0,y:1};
+  	expect(compute_manhattan_distance(a,b)).toEqual(2)
 });
-test("Manhattan x2", () => {
+test("Manhattan y4", () => {
+	const a:Coordinates = {x:0,y:0};
+	const b:Coordinates = {x:0,y:-1};
+  	expect(compute_manhattan_distance(a,b)).toEqual(1)
+});
+test("Manhattan y5", () => {
+	const a:Coordinates = {x:0,y:6};
+	const b:Coordinates = {x:0,y:-1};
+  	expect(compute_manhattan_distance(a,b)).toEqual(7)
+});
+test("Manhattan x", () => {
 	const a:Coordinates = {x:2,y:0};
-	const b:Coordinates = {x:1,y:0};
-  	expect(compute_manhattan_distance(a,b)).toEqual(1);
+	const b:Coordinates = {x:-3,y:0};
+  	expect(compute_manhattan_distance(a,b)).toEqual(5);
 });
 test("Manhattan xy1", () => {
 	const a:Coordinates = {x:0,y:0};
@@ -66,4 +71,19 @@ test("Manhattan xy2", () => {
 	const a:Coordinates = {x:-1,y:-1};
 	const b:Coordinates = {x:1,y:1};
   	expect(compute_manhattan_distance(a,b)).toEqual(4);
+});
+test("Manhattan xy3", () => {
+	const a:Coordinates = {x:1,y:1};
+	const b:Coordinates = {x:-1,y:-1};
+  	expect(compute_manhattan_distance(a,b)).toEqual(4);
+});
+test("Manhattan xy4", () => {
+	const a:Coordinates = {x:1,y:-1};
+	const b:Coordinates = {x:-1,y:1};
+  	expect(compute_manhattan_distance(a,b)).toEqual(4);
+});
+test("Manhattan xy5", () => {
+	const a:Coordinates = {x:-1,y:2};
+	const b:Coordinates = {x:5,y:-3};
+  	expect(compute_manhattan_distance(a,b)).toEqual(11);
 });
