@@ -29,41 +29,41 @@ type Coordinates = {
 }
 
 
-const taxicab = function (pt_a:Coordinates, pt_b:Coordinates):number{
+const compute_manhattan_distance = function (pt_a:Coordinates, pt_b:Coordinates):number{
 	return Math.abs(pt_a.x - pt_b.x) + Math.abs(pt_a.y - pt_b.y)
 }
 
 test("Manhattan 0", () => {
 	const a:Coordinates = {x:0,y:0};
-  	expect(taxicab(a,a)).toEqual(0)
+  	expect(compute_manhattan_distance(a,a)).toEqual(0)
 });
 test("Manhattan y1", () => {
 	const a:Coordinates = {x:0,y:0};
 	const b:Coordinates = {x:0,y:1};
-  	expect(taxicab(a,b)).toEqual(1)
+  	expect(compute_manhattan_distance(a,b)).toEqual(1)
 });
 test("Manhattan y2", () => {
 	const a:Coordinates = {x:0,y:2};
 	const b:Coordinates = {x:0,y:1};
-  	expect(taxicab(a,b)).toEqual(1)
+  	expect(compute_manhattan_distance(a,b)).toEqual(1)
 });
 test("Manhattan x1", () => {
 	const a:Coordinates = {x:0,y:0};
 	const b:Coordinates = {x:1,y:0};
-  	expect(taxicab(a,b)).toEqual(1);
+  	expect(compute_manhattan_distance(a,b)).toEqual(1);
 });
 test("Manhattan x2", () => {
 	const a:Coordinates = {x:2,y:0};
 	const b:Coordinates = {x:1,y:0};
-  	expect(taxicab(a,b)).toEqual(1);
+  	expect(compute_manhattan_distance(a,b)).toEqual(1);
 });
 test("Manhattan xy1", () => {
 	const a:Coordinates = {x:0,y:0};
 	const b:Coordinates = {x:1,y:1};
-  	expect(taxicab(a,b)).toEqual(2);
+  	expect(compute_manhattan_distance(a,b)).toEqual(2);
 });
 test("Manhattan xy2", () => {
 	const a:Coordinates = {x:-1,y:-1};
 	const b:Coordinates = {x:1,y:1};
-  	expect(taxicab(a,b)).toEqual(4);
+  	expect(compute_manhattan_distance(a,b)).toEqual(4);
 });
